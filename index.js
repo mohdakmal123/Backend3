@@ -1,6 +1,6 @@
 const express = require('express');
 const UserRouter = require('./routers/userRouter');
-const ProductRouter = require('./routers/productRouter');
+const productRouter = require('./routers/productRouter');
 const cors = require('cors');
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use('/user', UserRouter);
-app.use('/product', ProductRouter);
+app.use('/product', productRouter);
 
 // endpoint or route
 app.get('/', (req, res) => {
