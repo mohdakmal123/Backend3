@@ -106,6 +106,22 @@ Model.find(req.body)
     .then((result) => {
  if(result){
 
+    const {_id} = result;
+
+    jwt.sign(
+        {_id}, //payload
+        process.env.JWT_SECRET, 
+        {expiresIn: '1h'}, 
+        (err, token) => {
+            if(err){
+                console.log(err);
+                res.status(500).json(err);
+            }else{
+                res.status(200).json({ token });
+
+            }
+        }
+    )
 
 
  }else{
